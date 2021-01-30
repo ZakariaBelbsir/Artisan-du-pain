@@ -5,9 +5,9 @@
     </div>
     <div class="container my-12 flex content-center items-center">
       <form class="max-w-lg w-full mx-auto border shadow-xl rounded-lg px-4 py-2"
-            method="POST" netlify netlify-honeypot="bot-field"
+            method="POST" data-netlify="true" netlify-honeypot="bot-field"
             name="contact"
-            hidden>
+            >
         <input type="hidden" name="form-name" value="contact" />
         <div class="flex flex-wrap -mx-3 mb-6">
           <div class="w-full px-3">
