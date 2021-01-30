@@ -9,7 +9,6 @@
           method="post"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
-          @submit.prevent="handleSubmit"
       >
         <input type="hidden" name="form-name" value="ask-question" />
                 <div class="flex flex-wrap -mx-3 mb-6">
@@ -21,7 +20,7 @@
                    border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none
                    focus:bg-white focus:border-gray-500"
                    id="name" required type="text"
-                   name="name" :value="form.name">
+                   name="name" :value="name">
                   </div>
                 </div>
                 <div class="flex flex-wrap -mx-3 mb-6">
@@ -34,7 +33,7 @@
                       border-gray-200 rounded py-3 px-4 mb-3 leading-tight
                       focus:outline-none focus:bg-white focus:border-gray-500"
                       id="email" required type="email"
-                      name="email" :value="form.email">
+                      name="email" :value="email">
                   </div>
                 </div>
                 <div class="flex flex-wrap -mx-3 mb-6">
@@ -46,7 +45,7 @@
                       class=" no-resize appearance-none block w-full bg-gray-200 text-gray-700 border
                       border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none
                       focus:bg-white focus:border-gray-500 h-48 resize-none"
-                      required id="message" :value="form.message"
+                      required id="message" :value="message"
                       name="message"></textarea>
                   </div>
                 </div>
@@ -63,41 +62,39 @@
   </div>
 </template>
 <script>
-import axios from "axios";
+// import axios from "axios";
 
 export default {
   name: "Contact",
   data(){
     return {
-      form: {
+      // form: {
         name: '',
         email: '',
         message: '',
-      },
+      // },
     }
     },
-  methods: {
-    encode (data) {
-      return Object.keys(data)
-          .map(
-              key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
-          )
-          .join("&");
-    },
-    handleSubmit () {
-      const axiosConfig = {
-        header: { "Content-Type": "application/x-www-form-urlencoded" }
-      };
-      axios.post(
-          "/",
-          this.encode({
-            "form-name": "ask-question",
-            ...this.form
-          }), axiosConfig
-      ).then((response) => {
-        console.log(response.data)
-      });
-    }
-  }
+  // methods: {
+  //   encode (data) {
+  //     return Object.keys(data)
+  //         .map(
+  //             key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
+  //         )
+  //         .join("&");
+  //   },
+  //   handleSubmit () {
+  //     const axiosConfig = {
+  //       header: { "Content-Type": "application/x-www-form-urlencoded" }
+  //     };
+  //     axios.post(
+  //         "/",
+  //         this.encode({
+  //           "form-name": "ask-question",
+  //           ...this.form
+  //         }), axiosConfig
+  //     )
+  //   }
+  // }
 }
 </script>
