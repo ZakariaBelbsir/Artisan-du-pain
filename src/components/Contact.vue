@@ -5,7 +5,7 @@
     </div>
     <div class="container my-12 flex content-center items-center">
       <form class="max-w-lg w-full mx-auto border shadow-xl rounded-lg px-4 py-2"
-            action="POST" data-netlify="true"
+            method="POST" data-netlify="true"
             name="contact"
             data-netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="contact" />
