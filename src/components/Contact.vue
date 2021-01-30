@@ -5,8 +5,11 @@
     </div>
     <div class="container my-12 flex content-center items-center">
       <form class="max-w-lg w-full mx-auto border shadow-xl rounded-lg px-4 py-2"
-            method="POST" data-netlify="true" netlify-honeypot="bot-field"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
             name="contact"
+            @submit.prevent="handleSubmit"
             >
         <input type="hidden" name="form-name" value="contact" />
         <div class="flex flex-wrap -mx-3 mb-6">
@@ -18,7 +21,7 @@
            border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none
            focus:bg-white focus:border-gray-500"
                    id="name" required type="text"
-            name="name">
+            name="name" v-model="form.name">
           </div>
         </div>
         <div class="flex flex-wrap -mx-3 mb-6">
@@ -31,7 +34,7 @@
               border-gray-200 rounded py-3 px-4 mb-3 leading-tight
               focus:outline-none focus:bg-white focus:border-gray-500"
                 id="email" required type="email"
-            name="email">
+            name="email" v-model="form.email">
           </div>
         </div>
         <div class="flex flex-wrap -mx-3 mb-6">
@@ -42,7 +45,7 @@
             <textarea class=" no-resize appearance-none block w-full bg-gray-200 text-gray-700 border
            border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none
            focus:bg-white focus:border-gray-500 h-48 resize-none"
-                      required id="message"
+                      required id="message" v-model="form.message"
             name="message"></textarea>
           </div>
         </div>
@@ -61,8 +64,42 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-  name: "Contact"
+  name: "Contact",
+  data(){
+    return {
+      form: {
+        name: '',
+        email: '',
+        message: '',
+      },
+    }
+  },
+  methods:{
+    encode(data){
+      return Object.keys(data)
+          .map(
+              (key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`,
+          )
+          .join('&');
+    },
+    handleSubmit() {
+      const axiosConfig = {
+        header: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      };
+      this.form.speaker = this.speaker.name;
+      axios.post(
+          '/',
+          this.encode({
+            'form-name': 'contact-speaker',
+            ...this.form,
+          }),
+          axiosConfig,
+      );
+    }
+  }
 }
 </script>
 
