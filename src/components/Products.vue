@@ -4,7 +4,7 @@
       Nos spécialités
     </div>
     <div class="w-full container mx-auto lg:flex">
-      <div class="bg-white rounded-lg border w-1/3 overflow-hidden my-2 mx-2 h-88 shadow-xl" v-for="(speciality, index) in specialities" :key="index">
+      <div class="bg-white rounded-lg border lg:w-1/3 overflow-hidden my-2 mx-2 h-88 shadow-xl" v-for="(speciality, index) in specialities" :key="index">
         <img :src="speciality.image" :alt="speciality.title" class="w-full h-64 object-cover object-center">
         <div class="p-6 text-gray-800 text-lg font-semibold antialiased uppercase tracking-wide">{{speciality.description}}</div>
       </div>
