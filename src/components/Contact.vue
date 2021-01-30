@@ -94,7 +94,9 @@ export default {
             "form-name": "ask-question",
             ...this.form
           }), axiosConfig
-      );
+      ).then((response) => {
+        console.log(response.data)
+      });
     }
   }
 }
