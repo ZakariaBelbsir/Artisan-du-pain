@@ -89,11 +89,10 @@ export default {
       const axiosConfig = {
         header: { 'Content-Type': 'application/x-www-form-urlencoded' },
       };
-      this.form.speaker = this.speaker.name;
       axios.post(
           '/',
           this.encode({
-            'form-name': 'contact-speaker',
+            'form-name': 'contact',
             ...this.form,
           }),
           axiosConfig,
